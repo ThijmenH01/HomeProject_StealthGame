@@ -23,9 +23,7 @@ public class Player : MonoBehaviour
 
     Rigidbody rb;
 
-
     void Start() {
-        print(balancePerm);
         rb = GetComponent<Rigidbody>();
         Guard.OnGuardHasSpottedPlayer += Disable;
 
