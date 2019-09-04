@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    [Header("Tiles")]
     public Transform[] tilePrefabs;
+    [Header("Ground")]
     public Transform ground;
     public Vector2 mapSize;
     public float tileSize = 10;
