@@ -28,12 +28,8 @@ public class GameUI : MonoBehaviour
     void Update() {
         if (gameIsOver) {
             if (Input.GetKeyDown(KeyCode.Space)) {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
-        }
-        if (Input.GetKeyDown(KeyCode.F)) {
-            player.winCount++;
-            Debug.Log(player.winCount.ToString());
         }
     }
 
@@ -65,5 +61,9 @@ public class GameUI : MonoBehaviour
             PlayerPrefs.SetInt("highScore", highScore);
             highScoreText.text = highScore.ToString();
         }
+    }
+
+    private void OnDestroy() {
+        Guard.OnGuardHasSpottedPlayer -= ShowGameLoseUI;
     }
 }

@@ -16,9 +16,6 @@ public class MapGenerator : MonoBehaviour
         GenerateMap();
     }
 
-    void Update(){
-    }
-
     public void GenerateMap() {
         for (int x = 0; x < mapSize.x; x++) {
             for (int y = 0; y < mapSize.y; y++) {
