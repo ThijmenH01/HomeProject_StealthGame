@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 7.5f;
     public float smoothMoveTime = 0.1f;
     public float turnSpeed = 8;
+    public int winCount;
 
     float angle;
     float smoothInputMagnitude;
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour
     void Start() {
         rb = GetComponent<Rigidbody>();
         Guard.OnGuardHasSpottedPlayer += Disable;
+        if (PlayerPrefs.HasKey("winCount"))
+            winCount = PlayerPrefs.GetInt("winCount");
     }
 
     void Update() {
