@@ -16,9 +16,9 @@ public class Coin : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
 
         if (other.gameObject.GetComponent<Player>() != null) {
-            Player.balanceTemp++;
-            PlayerPrefs.SetInt("balanceTemp", Player.balanceTemp);
-            GameManager.instance.balanceTempText.text = Player.balanceTemp.ToString();
+            Player.balancePerm++;
+            PlayerPrefs.SetInt("balancePerm", Player.balancePerm);
+            GameManager.instance.balancePermText.text = Player.balancePerm.ToString();
             Destroy(gameObject);
         }
     }

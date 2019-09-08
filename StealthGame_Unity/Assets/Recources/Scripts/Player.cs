@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     public float moveSpeed = 7.5f;
     public float smoothMoveTime = 0.1f;
     public float turnSpeed = 8;
-    public int winCount;
-    public static int balanceTemp;
     public static int balancePerm;
 
     float angle;
@@ -27,13 +25,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Guard.OnGuardHasSpottedPlayer += Disable;
 
-        if (PlayerPrefs.HasKey("winCount"))
-            winCount = PlayerPrefs.GetInt("winCount");
-
-        if (PlayerPrefs.HasKey("balanceTemp"))
-            balanceTemp = PlayerPrefs.GetInt("balanceTemp");
-
-        if (PlayerPrefs.HasKey("balancePerm     "))
+        if (PlayerPrefs.HasKey("balancePerm"))
             balancePerm = PlayerPrefs.GetInt("balancePerm");
     }
 

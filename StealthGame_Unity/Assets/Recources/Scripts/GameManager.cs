@@ -12,9 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameLoseUI;
     public GameObject gameWinUI;
     [Header("Text")]
-    public Text WinCountText;
-    public Text highScoreText;
-    public Text balanceTempText;
     public Text balancePermText;
     public Player player;
     public int highScore;
@@ -26,9 +23,6 @@ public class GameManager : MonoBehaviour
         instance = this;
         Player.balancePerm = PlayerPrefs.GetInt("balancePerm");
         balancePermText.text = Player.balancePerm.ToString();
-        player.winCount = PlayerPrefs.GetInt("winCount");
-        highScore = PlayerPrefs.GetInt("highScore");
-        highScoreText.text = highScore.ToString();
         Guard.OnGuardHasSpottedPlayer += ShowGameLoseUI;
         FindObjectOfType<Player>().OnReachedExit += ShowGameWinUI;
     }
@@ -42,25 +36,14 @@ public class GameManager : MonoBehaviour
     }
 
     void ShowGameWinUI() {
-        player.winCount++;
-        Player.balancePerm += 2; //Win Reward
-        Player.balancePerm += Player.balanceTemp;
-        Player.balanceTemp = 0;
+        Player.balancePerm += 5; //Win Reward
         PlayerPrefs.SetInt("balancePerm", Player.balancePerm);
-        PlayerPrefs.SetInt("balanceTemp", Player.balanceTemp);
-        PlayerPrefs.SetInt("winCount", player.winCount);
 
         balancePermText.text = Player.balancePerm.ToString();
-        WinCountText.text = player.winCount.ToString();
         OnGameOver(gameWinUI);
     }
 
     void ShowGameLoseUI() {
-        player.winCount = 0;
-        Player.balanceTemp = 0;
-        PlayerPrefs.SetInt("balanceTemp", Player.balanceTemp);
-        PlayerPrefs.SetInt("winCount", player.winCount);
-        WinCountText.text = player.winCount.ToString();
         OnGameOver(gameLoseUI);
     }
 
@@ -69,15 +52,6 @@ public class GameManager : MonoBehaviour
         gameIsOver = true;
         Guard.OnGuardHasSpottedPlayer -= ShowGameLoseUI;
         FindObjectOfType<Player>().OnReachedExit -= ShowGameWinUI;
-        SetHighScore();
-    }
-
-    void SetHighScore() {
-        if(player.winCount > highScore) {
-            highScore = player.winCount;
-            PlayerPrefs.SetInt("highScore", highScore);
-            highScoreText.text = highScore.ToString();
-        }
     }
 
     private void OnDestroy() {
