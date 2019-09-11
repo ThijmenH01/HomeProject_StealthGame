@@ -33,12 +33,17 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.F)) {
+            Player.balancePerm += 50;
+            balancePermText.text = Player.balancePerm.ToString();
+            PlayerPrefs.SetInt("balancePerm", Player.balancePerm);
+        }
     }
 
     void ShowGameWinUI() {
         Player.balancePerm += 5; //Win Reward
         PlayerPrefs.SetInt("balancePerm", Player.balancePerm);
-
         balancePermText.text = Player.balancePerm.ToString();
         OnGameOver(gameWinUI);
     }

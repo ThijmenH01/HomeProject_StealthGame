@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float smoothMoveTime = 0.1f;
     public float turnSpeed = 8;
     public static int balancePerm;
+    public Renderer renderer;
 
     float angle;
     float smoothInputMagnitude;
@@ -23,10 +24,13 @@ public class Player : MonoBehaviour
 
     void Start() {
         rb = GetComponent<Rigidbody>();
+        renderer = GetComponent<Renderer>();
         Guard.OnGuardHasSpottedPlayer += Disable;
 
         if (PlayerPrefs.HasKey("balancePerm"))
             balancePerm = PlayerPrefs.GetInt("balancePerm");
+
+        renderer.material.color = PlayerColorCarrier.instance.playerColor;
     }
 
     void Update() {
