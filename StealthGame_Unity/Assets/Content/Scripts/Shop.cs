@@ -34,9 +34,11 @@ public class Shop : MonoBehaviour
 
     private void OnButtonClick(ShopItemScriptObj item) {
         if (Player.balancePerm >= item.itemPrice && Player.balancePerm >= 0 && !item.itemIsOwned){
-            Player.balancePerm -= item.itemPrice;
-            PlayerPrefs.SetInt("balancePerm", Player.balancePerm);
-            balancePermText.text = Player.balancePerm.ToString();
+            if (!item.itemIsOwned) {
+                Player.balancePerm -= item.itemPrice;
+                PlayerPrefs.SetInt("balancePerm", Player.balancePerm);
+                balancePermText.text = Player.balancePerm.ToString();
+            }
             PlayerColorCarrier.instance.playerColor = item.itemColor;
             item.itemIsOwned = true;
         }
