@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        //if (Input.GetKeyDown(KeyCode.Z)) {
+        //    PlayerPrefs.DeleteAll();
+        //}
+
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.F)) {
             Player.balancePerm += 50;
