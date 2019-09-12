@@ -34,12 +34,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.F)) {
             Player.balancePerm += 50;
             balancePermText.text = Player.balancePerm.ToString();
             PlayerPrefs.SetInt("balancePerm", Player.balancePerm);
         }
+#endif
     }
+
 
     void ShowGameWinUI() {
         Player.balancePerm += 5; //Win Reward

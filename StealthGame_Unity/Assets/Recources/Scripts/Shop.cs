@@ -26,10 +26,8 @@ public class Shop : MonoBehaviour
             itemObject = Instantiate(shopItemPrefab, shopContainer);
 
             itemObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(si));
-
             itemObject.GetComponent<Image>().color = si.itemColor;
             itemObject.transform.GetChild(1).GetComponent<Text>().text = "$ " + si.itemPrice.ToString();
-
             itemObject.GetComponent<ShopItem>().SetScriptObj(si);
         }
     }

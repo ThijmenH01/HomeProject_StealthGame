@@ -10,8 +10,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private Image lockImage;
 
     private void Start() {
-        //!FIX
-        isOwned = PlayerPrefs.GetInt("isOwned");
+        isOwned = PlayerPrefs.GetInt("isOwned" + shopItemScriptObj.itemID.ToString());
     }
 
     private void Update() {
@@ -25,7 +24,7 @@ public class ShopItem : MonoBehaviour
     private void CheckIfOwned() {
         if (shopItemScriptObj.itemIsOwned) {
             isOwned = 1; // Sets to Owned}
-            PlayerPrefs.SetInt("isOwned", isOwned);
+            PlayerPrefs.SetInt("isOwned" + shopItemScriptObj.itemID.ToString(), isOwned);
         }
 
         if (isOwned == 0) {
